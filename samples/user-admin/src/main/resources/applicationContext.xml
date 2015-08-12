@@ -65,19 +65,19 @@
             <property name="defaultBase" value="dc=example,dc=com" />
         </bean>
 
-        <!--
+        <!-- 
             This is for test and demo purposes only - EmbeddedLdapServerFactoryBean launches an in-process
             LDAP server.
         -->
-        <bean id="embeddedLdapServer" class="org.springframework.ldap.test.EmbeddedLdapServerFactoryBean">
+        <bean id="embeddedLdapServer" class="org.springframework.ldap.samples.useradmin.server.EmbeddedLdapServerFactoryBean">
             <property name="partitionName" value="example"/>
             <property name="partitionSuffix" value="${sample.ldap.base}" />
             <property name="port" value="18880" />
         </bean>
     </beans>
 
-    <beans profile="no-apacheds">
         <!-- Populates the LDAP server with initial data -->
+    <beans profile="no-apacheds">
         <bean class="org.springframework.ldap.test.LdifPopulator">
             <property name="contextSource" ref="contextSource" />
             <property name="resource" value="classpath:/setup_data.ldif" />
